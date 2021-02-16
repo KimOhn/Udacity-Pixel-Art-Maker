@@ -18,10 +18,7 @@ function makeGrid(rows, cols) {
         let row = tableGrid.insertRow(i);
         for (var p = 0; p < cols; p++) {
             let col = row.insertCell(p);
-            //adding addEventListener to each cell created so that when the event happens on a target, the color attribute is updated
-            col.addEventListener('click', function(e) {
-                e.target.style.backgroundColor = colorInput.value;
-            })
+            
         }
 
     }
@@ -36,3 +33,16 @@ submitButton.addEventListener('submit', function(event) {
     makeGrid(rows.value, cols.value);
     //need to call row and col values "after" the button is submitted to update with new values
 })
+
+tableGrid.addEventListener('click',function(e){
+	if(e.target.nodeName == "TD") {
+        e.target.style.backgroundColor = colorInput.value;
+}
+})
+
+tableGrid.addEventListener('dblclick',function(e){
+	if(e.target.nodeName == "TD") {
+        e.target.style.backgroundColor = 'white';
+}
+})
+
